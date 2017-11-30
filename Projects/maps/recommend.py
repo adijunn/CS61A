@@ -19,9 +19,13 @@ def find_closest(location, centroids):
     [2.0, 3.0]
     """
     # BEGIN Question 3
-    for cent in centroids:
-        if distance(location, cent) == min([distance(location, c) for c in centroids]):
-            return cent
+    #Original solution
+    #for cent in centroids:
+        #if distance(location, cent) == min([distance(location, c) for c in centroids]):
+            #return cent
+
+    #alternative solution using min function
+    return min(centroids, key=lambda x: distance(location, x))
 
     # END Question 3
 
@@ -150,14 +154,14 @@ def rate_all(user, restaurants, feature_fns):
     predictor = best_predictor(user, ALL_RESTAURANTS, feature_fns)
     reviewed = user_reviewed_restaurants(user, restaurants)
     # BEGIN Question 9
-    d = {}
+    dict_of_ratings_by_name = {}
     for restaurant in restaurants:
         name = restaurant_name(restaurant)
         if restaurant in reviewed:
-            d[name] = user_rating(user, name)
+            dict_of_ratings_by_name[name] = user_rating(user, name)
         else:
-            d[name] = predictor(restaurant)
-    return d
+            dict_of_ratings_by_name[name] = predictor(restaurant)
+    return dict_of_ratings_by_name
     # END Question 9
 
 
