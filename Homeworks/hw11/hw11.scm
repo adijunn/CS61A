@@ -6,12 +6,15 @@
   )
 )
 
+
+
 (define (scale-stream s k)
   (cond
       ((null? s) ())
       (else (cons-stream (* (car s) k) (scale-stream (cdr-stream s) k)))
       )
 )
+
 
 
 (define (has-cycle s)
@@ -24,6 +27,8 @@
   )
   (helper s nil)
 )
+
+
 
 
 

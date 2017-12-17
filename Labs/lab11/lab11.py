@@ -18,6 +18,9 @@ def scale(s, k):
         except StopIteration:
             break
 
+
+
+
 def countdown(n):
     """
     A generator that counts down from N to 0.

@@ -7,6 +7,7 @@
   )
 )
 
+
 (define (substitute s old new)
 (cond ((null? s) nil)
       ((pair? (car s)) (cons (substitute (car s) old new)
@@ -17,6 +18,7 @@
 )
 
 
+
 (define (sub-all s olds news)
 (if (null? olds)
   s
@@ -24,6 +26,8 @@
                    (cdr olds)
                    (cdr news)))
 )
+
+
 
 (define (cadr s) (car (cdr s)))
 (define (caddr s) (cadr (cdr s)))
@@ -74,6 +78,7 @@
   (make-sum (derive (addend expr) var) (derive (augend expr) var))
 )
 
+
 (define (derive-product expr var)
 (make-sum
   (make-product
@@ -86,6 +91,7 @@
   )
 )
 )
+
 
 ; Exponentiations are represented as lists that start with ^.
 (define (make-exp base exponent)

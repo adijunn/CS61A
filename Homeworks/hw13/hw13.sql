@@ -111,12 +111,12 @@ CREATE TABLE lowest_prices AS
   SELECT store, item, MIN(price) FROM inventory GROUP BY item;
 
 CREATE TABLE shopping_list AS
-WITH items(item) AS (
-    SELECT name FROM products GROUP BY category HAVING MIN(MSRP/rating)
-)
-SELECT items.item AS my_item, lowest_prices.store AS store FROM lowest_prices, items
-  WHERE lowest_prices.item = items.item
-  GROUP BY items.item;
+  WITH items(item) AS (
+      SELECT name FROM products GROUP BY category HAVING MIN(MSRP/rating)
+  )
+  SELECT items.item AS my_item, lowest_prices.store AS store FROM lowest_prices, items
+    WHERE lowest_prices.item = items.item
+    GROUP BY items.item;
 
 CREATE TABLE total_bandwidth AS
 WITH megabits_table(megabit) AS (
